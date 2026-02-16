@@ -61,3 +61,45 @@ j'ai pris une ip non utilise la 192.168.1.11. je suis allez dans mes reglage de 
 j'ai modifié mon adresse IP avec une adresse IP que je sais libres grace a `nmap`. j'ai pris 192.168.1.11 je suis retournée dans mes paramètres réseau et j'ai remplacé l'IP. Et le test fonctionne car j'ai pu ping google et j'ai pu naviguer sur le web 
 ```
 ---
+
+## II. Exploration locale en duo
+
+Prérequis
+deux PCs avec ports RJ45
+un câble RJ45
+firewalls désactivés sur les deux PCs
+2.Cablage
+connection par cable via le hp de Quentin et de denael
+
+![photo](https://i.ibb.co/S4L3gLDV/IMG-2162.png)
+
+
+Création du réseau
+modifiez l'IP des deux machines pour qu'elles soient dans le même réseau
+pc1: 10.33.69.101
+pc2: 10.33.69.195
+
+vérifiez à l'aide de commmande ip a et il on bien ete modifier en 10.33.69.101,10.33.69.195
+utilisez ping pour tester la connectivité entre les deux machines avec
+ping 10.33.69.195
+
+![photo](https://i.ibb.co/ptVp2TW/Capture-d-cran-du-2026-02-16-11-45-19.png)
+
+ping 10.33.69.10
+
+![photo](https://i.ibb.co/qYWLjb8V/Screenshot-from-2026-02-16-11-45-37.png)
+
+testez avec un /24
+- PC 1 : sudo ip addr add 192.168.1.1/24 dev <interface>
+- PC 2 : sudo ip addr add 192.168.1.2/24 dev <interface>
+- Vérification : ip addr show <interface>
+- test : Depuis le PC 1, faites ping 192.168.1.2.
+
+![ping]()
+puis un /20
+- PC 1 : sudo ip addr add 172.16.0.1/20 dev <interface>
+- PC 2 : sudo ip addr add 172.16.15.254/20 dev <interface>
+- test : depuis le PC1, on ping 172.16.15.254
+
+![ping]()
+Image
